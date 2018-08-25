@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function findStuff(RecipeID){
+    var requestURL = 'http://localhost:8080/Project/example/web/find/' + RecipeID;
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function () {
+        var reply = request.response;
+        var myH1 = document.createElement('h1');
+        myH1.textContent = reply.Rname;
+        document.getElementsByTagName('body')[0].appendChild(myH1);
+    }
+}
+</script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="findStuff(1)">click me</button>
+</body>
+</html>
